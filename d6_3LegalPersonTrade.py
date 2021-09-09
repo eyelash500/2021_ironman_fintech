@@ -50,7 +50,7 @@ class legel_daily_future_option:
         self.df = None  # 把資料從csv轉乘datframe
         self.csv = self.get_csv_data()  # 取得網路上的資料，格式為csv
 
-        if type(self.csv) == False:
+        if type(self.csv) is False:
             print(f"無法取得資料:{self.title}")
 
     def get_csv_data(self, url=None) -> bool:
