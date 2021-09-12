@@ -87,7 +87,7 @@ class legel_daily_future_option:
                 # 新增SQL語法
                 for _, row in self.df.iterrows():
                     trade_date = str(row[0])
-                    cmd = f"""INSERT INTO LegalDailyFutureOption 
+                    cmd = f"""INSERT IGNORE INTO LegalDailyFutureOption 
                     (TradeDate, TradeGroup,
                     FutureLongQty, OptionLongQty,
                     FutureLongAmount, OptionLongAmount,

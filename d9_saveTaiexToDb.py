@@ -69,9 +69,9 @@ class taiex_history:
                 for _, row in self.df.iterrows():
                     trade_date = str(row[0])
                     trade_date = f"{str(int(row[0]/10000)+1911)}-{str(row[0])[3:5]}-{str(row[0])[5:8]}"
-                    cmd = f"""INSERT INTO Taiex
+                    cmd = f"""INSERT IGNORE INTO Taiex
                     (TradeDate, Open, High, Low, Close)
-                    values('{trade_date}',
+                    VALUES('{trade_date}',
                     '{row[1]}', {row[2]}, {row[3]}, {row[4]});"""
                     cursor.execute(cmd)
 

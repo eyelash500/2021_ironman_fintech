@@ -81,7 +81,7 @@ class legel_daily_future_option_history:
                 # 新增SQL語法
                 for _, row in self.df.iterrows():
                     trade_date = str(row[0])
-                    cmd = f"""INSERT INTO LegalDailyFutureOption 
+                    cmd = f"""INSERT IGNORE INTO LegalDailyFutureOption 
                     (TradeDate, TradeGroup,
                     FutureLongQty, OptionLongQty,
                     FutureLongAmount, OptionLongAmount,
@@ -95,7 +95,7 @@ class legel_daily_future_option_history:
                     FutureShortOIAmount, OptionShortOIAmount,
                     FutureOINetQty, OptionOINetQty,
                     FutureOINetAmount, OptionOINetAmount)
-                    values("{trade_date}", 
+                    VALUES("{trade_date}", 
                     '{row[1]}',
                     {row[2]}, {row[3]},
                     {row[4]}, {row[5]},
@@ -122,7 +122,9 @@ class legel_daily_future_option_history:
 
 
 csv_data = legel_daily_future_option_history()
-r = csv_data.get_csv_data()
+r = csv_data.get_csv_data(
+    os.path.join(os.path.dirname(__file__), "3legalhistory_20200101-20210911.csv")
+)
 if r:
     r = csv_data.insert_mysql()
     # print("success")

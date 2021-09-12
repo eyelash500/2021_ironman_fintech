@@ -55,9 +55,9 @@ def save_data_to_mysql_db():
             # 新增SQL語法
             for _, row in df.iterrows():
                 try:
-                    cmd = """INSERT INTO DailyPrice 
-                    (StockID, Symbol, TradeDate, OpenPrice, HighPrice, LowPrice,
-                    ClosePrice,Volumn)
+                    cmd = """INSERT IGNORE INTO DailyPrice 
+                    (StockID, Symbol, TradeDate, OpenPrice, HighPrice,
+                    LowPrice, ClosePrice, Volumn)
                     values(%s,%s,%s,%s,%s,%s,%s,%s);"""
                     cursor.execute(
                         cmd,

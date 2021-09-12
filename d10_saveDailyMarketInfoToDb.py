@@ -64,11 +64,11 @@ class daily_market_info:
                 for _, row in self.df.iterrows():
                     trade_date = str(row[0])
                     trade_date = f"{str(int(row[0]/10000)+1911)}-{str(row[0])[3:5]}-{str(row[0])[5:8]}"
-                    cmd = f"""INSERT INTO StockTransactionInfo
+                    cmd = f"""INSERT IGNORE INTO StockTransactionInfo
                     (TradeDate,
                     TranscationQty, TranscationAmount, TranscationCount,
                     Taiex, ChangePoint)
-                    values('{trade_date}',
+                    VALUES('{trade_date}',
                     '{row[1]}', {row[2]}, {row[3]}, {row[4]}, {row[5]});"""
                     cursor.execute(cmd)
                 conn.commit()
