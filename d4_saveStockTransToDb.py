@@ -65,11 +65,11 @@ def save_data_to_mysql_db():
                             "",
                             row.stock_symbol,
                             now,
-                            row.open if row.open == float("nan") else 0,
-                            row.high if row.high == float("nan") else 0,
-                            row.low if row.low == float("nan") else 0,
-                            row.close if row.close == float("nan") else 0,
-                            row.volume if row.volume == float("nan") else 0,
+                            row.open if pandas.notnull(row.open) else 0,
+                            row.high if pandas.notnull(row.high) else 0,
+                            row.low if pandas.notnull(row.low) else 0,
+                            row.close if pandas.notnull(row.close) else 0,
+                            row.volume if pandas.notnull(row.volume) else 0,
                         ),
                     )
                     conn.commit()
