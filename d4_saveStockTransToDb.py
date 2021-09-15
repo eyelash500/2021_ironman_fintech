@@ -62,7 +62,7 @@ def save_data_to_mysql_db():
                     cursor.execute(
                         cmd,
                         (
-                            "",
+                            None,
                             row.stock_symbol,
                             now,
                             row.open if pandas.notnull(row.open) else 0,
