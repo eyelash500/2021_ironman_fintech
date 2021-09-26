@@ -38,7 +38,7 @@ class daily_market_info:
         Args:
             param1 (str): 資料的url
         Returns:
-            bool: 回傳結果. True 表示取得成功，False 表示去得失敗或是轉換失敗。
+            bool: 回傳結果. True 表示取得成功，False 表示取得失敗或是轉換失敗。
         """
         if url:
             self.url = url
