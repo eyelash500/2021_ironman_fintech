@@ -58,6 +58,7 @@ class stock_transaction:
             param1 (str): 資料的url
         Returns:
             bool: 回傳結果. True 表示取得成功，False 表示去得失敗或是轉換失敗。
+
         """
         if url:
             self.url = url
@@ -79,6 +80,13 @@ class stock_transaction:
         return True
 
     def _insert_mysql(self) -> bool:
+        """Insert data into MySQL.
+
+        Returns:
+            bool: 回傳結果. True 表示儲存成功，False 表示儲存失敗。
+
+        """
+
         try:
             new_headers = self._create_new_header(self.df.columns)
             df = self.df[1:]  # 拿掉第一行的資料
