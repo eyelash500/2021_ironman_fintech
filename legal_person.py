@@ -7,7 +7,7 @@ import pandas
 import db_connect
 
 
-class legel_daily_future_option_history:
+class legal_daily_future_option_history:
     """Get the CSV which is recorded the data which 3 legal-person traded on
     future and option from Taifex's CSV.
 
@@ -155,12 +155,12 @@ class legel_daily_future_option_history:
 
 
 """實作測試"""
-# test = legel_daily_future_option_history()
+# test = legal_daily_future_option_history()
 # r = test.get_and_save()
 # print(r)
 
 
-class legel_daily_future_option:
+class legal_daily_future_option:
     """Get the CSV which is recorded the data which 3 legal-person traded on
     future and option from open data.
 
@@ -305,6 +305,6 @@ class legel_daily_future_option:
 
 
 """實作測試"""
-# test = legel_daily_future_option()
+# test = legal_daily_future_option()
 # r = test.get_and_save()
 # print(r)
