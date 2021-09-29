@@ -5,7 +5,7 @@ from io import StringIO
 import db_connect
 
 
-class legel_daily_future_option:
+class legal_daily_future_option:
 
     """Get the CSV which is recorded the data which 3 legal-person traded on
     future and option from open data.
@@ -127,6 +127,6 @@ class legel_daily_future_option:
         return True
 
 
-csv = legel_daily_future_option()
+csv = legal_daily_future_option()
 r = csv.insert_mysql()
 print(r)

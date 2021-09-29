@@ -4,7 +4,7 @@ import os
 import db_connect
 
 
-class legel_daily_future_option_history:
+class legal_daily_future_option_history:
     """Get the CSV which is recorded the data which 3 legal-person traded on
     future and option from Taifex's CSV.
     name: 區分期貨與選擇權二類-依日期（資料下載專區）
@@ -121,7 +121,7 @@ class legel_daily_future_option_history:
         return True
 
 
-csv_data = legel_daily_future_option_history()
+csv_data = legal_daily_future_option_history()
 r = csv_data.get_csv_data(
     os.path.join(os.path.dirname(__file__), "3legalhistory_20200101-20210911.csv")
 )
