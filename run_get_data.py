@@ -50,9 +50,9 @@ class signal:
 
 
 """實作測試"""
-# # 匯入資料
-# worker = daily_transaction()
-# worker.save_to_db()
+# 匯入資料
+worker = daily_transaction()
+worker.save_to_db()
 
 # 訊號燈印出
 signal = signal()
