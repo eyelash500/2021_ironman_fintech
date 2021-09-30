@@ -43,16 +43,16 @@ class signal:
 
     def _show_singnal(self, signal_list) -> None:
         """Do showing the signal function"""
-        print(f"時間：{datetime.now().strftime('%Y-%M-%D %H:%M:%S')}")
-        print(f"＝＝訊號燈＝＝")
+        print(f"時間：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print("＝＝訊號燈＝＝")
         for title, signal in signal_list:
             print(f"* {title}: {signal}")
 
 
 """實作測試"""
 # 匯入資料
-worker = daily_transaction()
-worker.save_to_db()
+# worker = daily_transaction()
+# worker.save_to_db()
 
 # 訊號燈印出
 signal = signal()
