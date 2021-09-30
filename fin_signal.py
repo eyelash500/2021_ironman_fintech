@@ -81,11 +81,11 @@ class fin_signal:
             else False
         )
 
-        return r
+        return ("最近交易日是近期六天最大的交易金額", r)
 
     def _get_signal_2(self):
         """signal_2: 顯示交易是否熱絡
-        最近的一個交易日，比前五日的最大的金額更大
+        最近的一個交易日，比前五日的平均金額更大
 
         Retrun:
             bool: True表示熱絡，False表示不熱絡
@@ -101,7 +101,7 @@ class fin_signal:
             else False
         )
 
-        return r
+        return ("最近的一個交易日比前五日平均金額更大", r)
 
     def _get_signal_3_1(self):
         """signal_3_1: 外資期貨留倉是否空單還是多單
@@ -118,7 +118,7 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = True if last_investment.iloc[0] > 0 else False
 
-        return r
+        return ("外資期貨留倉是多單", r)
 
     def _get_signal_4_1(self):
         """signal_4_1: 外資期貨留倉數量是否增加
@@ -137,10 +137,10 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = True if last_investment.iloc[0] >= last_5.iloc[-1] else False
 
-        return r
+        return ("外資期貨留倉數量是否增加", r)
 
-    def _get_signal_5_1(self) -> int:
-        """signal_5_1: 外資期貨留倉數量變化多少
+    def _get_signal_5_1(self) -> tuple:
+        """signal_5_1: 外資期貨留倉數量變化量
         最近一次交易日與前一次的期貨留倉數量做相減
 
         Retrun:
@@ -156,9 +156,9 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = last_investment.iloc[0] - last_5.iloc[-1]
 
-        return r
+        return ("外資期貨留倉數量變化量", r)
 
-    def _get_signal_6_1(self) -> int:
+    def _get_signal_6_1(self) -> tuple:
         """signal_6_1: 外資期貨留倉數變動比例
         最近一次交易日與前一次的期貨留倉數量做相減
 
@@ -175,7 +175,7 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = abs((last_investment.iloc[0] - last_5.iloc[-1]) / last_5.iloc[-1])
 
-        return r
+        return ("外資期貨留倉數變動率", r)
 
     def _get_signal_3_2(self):
         """signal_3_2: 自營商期貨留倉是否空單還是多單
@@ -192,7 +192,7 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = True if last_investment.iloc[0] > 0 else False
 
-        return r
+        return ("自營商期貨留倉是多單", r)
 
     def _get_signal_4_2(self):
         """signal_4_2: 自營商期貨留倉數量是否增加
@@ -211,9 +211,9 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = True if last_investment.iloc[0] >= last_5.iloc[-1] else False
 
-        return r
+        return ("自營商期貨留倉數量是否增加", r)
 
-    def _get_signal_5_2(self) -> int:
+    def _get_signal_5_2(self) -> tuple:
         """signal_5_2: 自營商期貨留倉數量變化多少
         最近一次交易日與前一次的期貨留倉數量做相減
 
@@ -230,9 +230,9 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = last_investment.iloc[0] - last_5.iloc[-1]
 
-        return r
+        return ("自營商期貨留倉數量變化量", r)
 
-    def _get_signal_6_2(self) -> int:
+    def _get_signal_6_2(self) -> tuple:
         """signal_6_2: 自營商期貨留倉數變動比例
         最近一次交易日與前一次的期貨留倉數量做相減
 
@@ -249,7 +249,7 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = abs((last_investment.iloc[0] - last_5.iloc[-1]) / last_5.iloc[-1])
 
-        return r
+        return ("自營商期貨留倉數量變化率", r)
 
     def _get_signal_3_3(self):
         """signal_3_3: 投信商期貨留倉是否空單還是多單
@@ -266,7 +266,7 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = True if last_investment.iloc[0] > 0 else False
 
-        return r
+        return ("投信商期貨留倉是多單", r)
 
     def _get_signal_4_3(self):
         """signal_4_3: 投信期貨留倉數量是否增加
@@ -285,9 +285,9 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = True if last_investment.iloc[0] >= last_5.iloc[-1] else False
 
-        return r
+        return ("投信期貨留倉數量是否增加", r)
 
-    def _get_signal_5_3(self) -> int:
+    def _get_signal_5_3(self) -> tuple:
         """signal_5_3: 投信期貨留倉數量變化多少
         最近一次交易日與前一次的期貨留倉數量做相減
 
@@ -304,9 +304,9 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = last_investment.iloc[0] - last_5.iloc[-1]
 
-        return r
+        return ("投信期貨留倉變化量", r)
 
-    def _get_signal_6_3(self) -> int:
+    def _get_signal_6_3(self) -> tuple:
         """signal_6_3: 投信期貨留倉數變動比例
         最近一次交易日與前一次的期貨留倉數量做相減
 
@@ -323,9 +323,9 @@ class fin_signal:
         last_investment = df_investment["FutureOINetQty"][-1:]
         r = abs((last_investment.iloc[0] - last_5.iloc[-1]) / last_5.iloc[-1])
 
-        return r
+        return ("投信期貨留倉數變動率", r)
 
-    def _get_signal_7(self) -> int:
+    def _get_signal_7(self) -> tuple:
         """signal_7: 5MA > 20MA
         近期5日平均比20日還要高
 
@@ -344,14 +344,13 @@ class fin_signal:
 
         r = True if close_price_5.iloc[-1] > close_price_20.iloc[-1] else False
 
-        return r
+        return ("台積電是否5MA > 20MA", r)
 
 
 """"實作測試"""
+# signal = fin_signal()
+# signal._get_db_data()
+# signal.show_data()
+# r = signal.get_signal()
 
-signal = fin_signal()
-signal._get_db_data()
-signal.show_data()
-r = signal.get_signal()
-
-print(r)
+# print(r)
